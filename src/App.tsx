@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { TableComponent } from "./components/Table/Table";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { CanvasStarsComponent } from "./components/CanvasStars/CanvasStars";
 
 function App() {
+  console.log("render App");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <main>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/table">Table</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/table">
+            <TableComponent />
+          </Route>
+
+          <Route path="/">
+            <CanvasStarsComponent></CanvasStarsComponent>
+          </Route>
+        </Switch>
+      </main>
+    </Router>
   );
 }
 
